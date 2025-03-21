@@ -29,7 +29,7 @@
                     nixos-wsl.nixosModules.default
                     ./hosts/wsl/configuration.nix
                     {
-                        system.stateVersion = "25.05";
+                        system.stateVersion = "24.05";
                         wsl.enable = true;
                     }
                 ];

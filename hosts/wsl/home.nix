@@ -4,52 +4,37 @@
     home.username = "lul";
     home.homeDirectory = "/home/lul";
 
-
-    # The home.packages option allows you to install Nix packages into your
-    # environment.
     home.packages = with pkgs; [
         ## Shell
         oh-my-zsh
-        eza
         github-cli
         ripgrep
-
         ## Programming
-        ### JS/TS
-        nodejs
-        pnpm
-        bun
-        typescript
-
-        ### python
-        python3
-
-        ### C
-        clang
-        codelldb
-        gcc
-        gdb
-
-        ### rust
-        rustup
-
-        ### go
-        go
-
-        ### zig
-        zig
-
+            ### JS/TS
+            nodejs
+            pnpm
+            typescript
+            ### python
+            python3
+            ### C
+            clang
+            lldb
+            # gcc # error: collision between `/nix/store/gj9lra51hwhxnhz05jqk5lh03wipamv0-gcc-wrapper-14-20241116/bin/ld' and `/nix/store/rdrbyalncimqir1gjdjwfns370zwi0bf-clang-wrapper-19.1.7/bin/ld'
+            # gdb
+            ### rust
+            rustup
+            ### go
+            go
+            ### zig
+            zig
         ## WSL
         wslu
-
-        ## Misc.
+        ## Misc
         aoc-cli
         fortune
         cowsay
         lolcat
-
         # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
         # (pkgs.writeShellScriptBin "my-hello" ''
         #   echo "Hello, ${config.home.username}!"
         # '')
@@ -59,8 +44,8 @@
         enable = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
-        autosuggestions.enable = true;
-        ohMyZsh = {
+        # zsh-autosuggestions.enable = true;
+        oh-my-zsh = {
             enable = true;
             theme = "gruvbox";
             plugins = [
@@ -77,20 +62,19 @@
                 "tmux"
                 "rust"
             ];
+        };
         initExtra = ''
             [[ -f "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
         '';
-        };
-
-    shellAliases = {
-        ## System
+        shellAliases = {
+            ## System
             c = "clear"; ## Clean your room
             q = "exit";
             stdn = "sudo shutdown now";
             reboot = "sudo shutdown --reboot now";
             rebt = "sudo shutdown --reboot now";
             il = "i3lock";
-            # Programs
+            ## Programs
             nv = "nvim";
             v = "nvim";
             py = "python";
@@ -108,7 +92,7 @@
             gcl= "git clone";
             gclr= "git clone --recurse-submodules";
             gsync = "git add -p && git commit -v && git push";
-        ## Eza
+            ## Eza
             x = "eza -l -h -n -s='type' --icons";
             xa = "x -a";
             xt = "x -T";
@@ -128,16 +112,13 @@
 
     programs.neovim = {
         enable = true;
-    defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-        nvim-lspconfig
-        plenary-nvim
-        gruvbox-material
+        defaultEditor = true;
+        plugins = with pkgs.vimPlugins; [
+            nvim-lspconfig
+            plenary-nvim
+            gruvbox-material
         ];
     };
-
-
-
 
     home.file = {
         # ".zshenv".source = .zshenv;

@@ -1,10 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-# NixOS-WSL specific options are documented on the NixOS-WSL repository:
-# https://github.com/nix-community/NixOS-WSL
-
 { config, lib, pkgs, inputs, ... }:
 
 {
@@ -12,19 +5,19 @@
         ## Flake input
         inputs.nixos-wsl.nixosModules.default
         inputs.home-manager.nixosModules.default
-
        ./hardware-configuration.nix
     ];
-
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
     ## WSL
     wsl.enable = true;
     wsl.defaultUser = "lul";
-
-    system.stateVersion = "25.05";
+    system.stateVersion = "24.05";
 
     environment.systemPackages = with pkgs; [
+        ## System
+        wslu
+        # writeShellScriptBin
+        home-manager
         ## Shell env
         # onwsl alacritty
         zsh
@@ -33,22 +26,18 @@
         github-cli
         neovim
         vim
-
-        ## Other shell pkgs
-        wget
-
-        ## System
+        ## System others
         networkmanager
         iwd
         pipewire
-
         ## GUI
         # onwsl i3
         # onwsl dwm
-
-        ## Other pkgs
+        ## CLI
         htop
-        home-manager
+        wget
+        clang
+        lldb
     ];
 
     environment.variables = {
@@ -61,7 +50,6 @@
         enable = true;
         defaultEditor = true;
     };
-
     programs.zsh.enable = true;
 
     ## Users
