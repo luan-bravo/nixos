@@ -63,9 +63,6 @@
                 "rust"
             ];
         };
-        initExtra = ''
-            [[ -f "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
-        '';
         shellAliases = {
             ## System
             c = "clear"; ## Clean your room
@@ -108,6 +105,9 @@
             merica = "setxkbmap us";
             inter = "setxkbmap -layout us -variant intl";
         };
+        initExtra = ''
+            [[ -f "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "${config.home.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
+        '';
     };
 
     programs.neovim = {
@@ -122,10 +122,8 @@
 
     home.file = {
         # ".zshenv".source = .zshenv;
-
         # # symlink to the Nix store copy.
         # ".screenrc".source = dotfiles/screenrc;
-
         # # You can also set the file content immediately.
         # ".gradle/gradle.properties".text = ''
         #   org.gradle.console=verbose
@@ -141,7 +139,6 @@
         ANDROID_HOME = "${config.home.homeDirectory}/Android/sdk";
         FLYCTL_INSTALL = "${config.home.homeDirectory}/.fly";
         PNPM_HOME = "${config.home.homeDirectory}/.local/share/pnpm";
-
         # "${config.home.homeDirectory}/.bun/_bun"
         # "$IDF_PATH/export.sh"
     };
