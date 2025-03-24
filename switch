@@ -1,0 +1,24 @@
+#!/bin/sh
+
+usage() {
+    echo "switch: my 'nixos-rebuild switch' script for managing my NixOS instances"
+    echo "USAGE: ./switch HOST"
+    echo "                HOST: a given nixos configuration key located in /etc/nixos/hosts/HOST"
+}
+
+if [ ! $# -eq 1 ]; then
+    echo "ERROR: Wrong amount of arguments"
+    usage
+    exit 1
+elif [ $# -eq 1 ] &&  [ $1 = "help" ]; then
+    usage
+    exit 0
+fi
+
+# TODO: Check available flake keys
+if nixos-rebuild switch --flake /etc/nixos#$1; then
+    echo "switch: NixOS switched successfully"
+else
+    echo "switch: ERROR: Could not switch to $1"
+    exit 2
+fi

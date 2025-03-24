@@ -5,10 +5,6 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
-        home-manager = {
-            url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
     };
     outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: {
         nixosConfigurations = {
@@ -25,7 +21,6 @@
                 system = "x86_64-linux";
                 specialArgs = {inherit inputs;};
                 modules = [
-                    inputs.home-manager.nixosModules.default
                     nixos-wsl.nixosModules.default
                     ./hosts/wsl/configuration.nix
                     {
