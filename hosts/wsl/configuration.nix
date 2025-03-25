@@ -4,7 +4,7 @@
     imports = [
         ## Flake input
         inputs.nixos-wsl.nixosModules.default
-        ./hardware-configuration.nix
+        ../../hardware-configuration.nix
     ];
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     ## WSL
