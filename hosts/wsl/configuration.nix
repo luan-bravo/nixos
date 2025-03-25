@@ -1,10 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
     imports = [
         ## Flake input
         inputs.nixos-wsl.nixosModules.default
-        ../../hardware-configuration.nix
+        ./hardware-configuration.nix
     ];
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     ## WSL
@@ -108,6 +108,7 @@
         enableCompletion = true;
         syntaxHighlighting.enable = true;
         # autosuggestions.enable = true;
+
         ohMyZsh = {
             enable = true;
             theme = "funky";
@@ -126,6 +127,7 @@
                 "python"
             ];
         };
+
         shellAliases = {
             ## System
             c = "clear"; ## Clean your room
@@ -168,6 +170,7 @@
             merica = "setxkbmap us";
             inter = "setxkbmap -layout us -variant intl";
         };
+
         shellInit = /*bash*/ ''
             export DOTDIR="$HOME/.config"
             export ZDOTDIR="$DOTDIR/zsh"
@@ -179,28 +182,25 @@
             export NOTES="$HOME/notes"
             export TODOFILE="$NOTES/todo.md"
 # colors
+
             export nc=$'\033[0m' # no coloring
+            export black=$'\033[0;30m'
+            export white=$'\033[1;37m'
+            export dark_gray=$'\033[0;30m'
+            export gray=$'\033[0;37m'
             export red=$'\033[1;31m'
             export yellow=$'\033[1;33m'
             export green=$'\033[1;32m'
-            : << 'COLORS'
-            Black        0;30
-            Red          0;31
-            Green        0;32
-            Brown/Orange 0;33
-            Blue         0;34
-            Purple       0;35
-            Cyan         0;36
-            Light Gray   0;37
-            Dark Gray     0;30
-            Light Red     1;31
-            Light Green   1;32
-            Yellow        1;33
-            Light Blue    1;34
-            Light Purple  1;35
-            Light Cyan    1;36
-            White         1;37
-            COLORS
+            export blue=$'\033[1;34m'
+            export purple=$'\033[1;35m'
+            export cyan=$'\033[1;36m'
+            export dark_red=$'\033[0;31m'
+            export dark_green=$'\033[0;32m'
+            export dark_brown/orange=$'\033[0;33m'
+            export dark_blue=$'\033[0;34m'
+            export dark_purple=$'\033[0;35m'
+            export dark_cyan=$'\033[0;36m'
+
             [[ -f "${config.users.users.lul.home}/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "${config.users.users.lul.home}/.nix-profile/etc/profile.d/hm-session-vars.sh"
             export ZSH_CUSTOM="/etc/nixos/modules/zsh/custom"
             export PATH="$PATH:${config.users.users.lul.home}/.local/share/adb-fastboot/platform-tools"
@@ -212,7 +212,6 @@
     };
 
     programs.bash = {
-        # enable = true;
         shellAliases = config.programs.zsh.shellAliases;
     };
 
