@@ -103,6 +103,7 @@
         enable = true;
         defaultEditor = true;
     };
+
     programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -177,12 +178,12 @@
             export ZSH_CUSTOM="$ZDOTDIR/custom"
             export ZSH="$ZDOTDIR/ohmyzsh"
             # export ZSH_THEME="gruvbox"
-# personal paths and variables
+            # personal paths and variables
             export GH="https://github.com"
             export NOTES="$HOME/notes"
             export TODOFILE="$NOTES/todo.md"
-# colors
 
+            ## COLORS
             export nc=$'\033[0m' # no coloring
             export black=$'\033[0;30m'
             export white=$'\033[1;37m'
@@ -196,12 +197,11 @@
             export cyan=$'\033[1;36m'
             export dark_red=$'\033[0;31m'
             export dark_green=$'\033[0;32m'
-            export dark_brown/orange=$'\033[0;33m'
+            export _brownorange=$'\033[0;33m'
             export dark_blue=$'\033[0;34m'
             export dark_purple=$'\033[0;35m'
             export dark_cyan=$'\033[0;36m'
 
-            [[ -f "${config.users.users.lul.home}/.nix-profile/etc/profile.d/hm-session-vars.sh" && source "${config.users.users.lul.home}/.nix-profile/etc/profile.d/hm-session-vars.sh"
             export ZSH_CUSTOM="/etc/nixos/modules/zsh/custom"
             export PATH="$PATH:${config.users.users.lul.home}/.local/share/adb-fastboot/platform-tools"
             export PATH="$PATH:${config.users.users.lul.home}/.turso"
