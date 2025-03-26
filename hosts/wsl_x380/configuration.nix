@@ -108,14 +108,14 @@
         enable = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
-        # autosuggestions.enable = true;
 
         ohMyZsh = {
             enable = true;
-            theme = "funky";
-            custom = "/etc/nixos/modules/zsh/custom";
+            custom = "/etc/nixos/modules/programs/zsh/custom";
+            theme = "gruvbox";
             plugins = [
                 "git"
+                "zoxide"
                 "fzf"
                 "man"
                 "tldr"
@@ -174,17 +174,14 @@
         };
 
         shellInit = /*bash*/ ''
+            ## Personal paths and variables
             export DOTDIR="$HOME/.config"
-            export ZDOTDIR="$DOTDIR/zsh"
-            # export ZSH_CUSTOM="$ZDOTDIR/custom"
-            export ZSH="$ZDOTDIR/ohmyzsh"
-            # export ZSH_THEME="gruvbox"
-            # personal paths and variables
+            export DOTFILES="$HOME/.config"
             export GH="https://github.com"
             export NOTES="$HOME/notes"
             export TODOFILE="$NOTES/todo.md"
 
-            ## COLORS
+            ## Colors
             export nc=$'\033[0m' # no coloring
             export black=$'\033[0;30m'
             export white=$'\033[1;37m'
@@ -203,12 +200,11 @@
             export dark_purple=$'\033[0;35m'
             export dark_cyan=$'\033[0;36m'
 
-            export ZSH_CUSTOM="/etc/nixos/modules/zsh/custom"
             export PATH="$PATH:${config.users.users.lul.home}/.local/share/adb-fastboot/platform-tools"
             export PATH="$PATH:${config.users.users.lul.home}/.turso"
             export PATH="$PATH:${config.environment.variables.ANDROID_HOME}/platform-tools"
             export PATH="$PATH:${config.environment.variables.ANDROID_HOME}/emulator"
-            export PATH="$PATH:${config.environment.variables.FLYCTL_INSTALL}/bin" ];
+            export PATH="$PATH:${config.environment.variables.FLYCTL_INSTALL}/bin"
         '';
     };
 
