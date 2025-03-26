@@ -113,6 +113,7 @@
         ohMyZsh = {
             enable = true;
             theme = "funky";
+            custom = "/etc/nixos/modules/zsh/custom";
             plugins = [
                 "git"
                 "fzf"
@@ -175,7 +176,7 @@
         shellInit = /*bash*/ ''
             export DOTDIR="$HOME/.config"
             export ZDOTDIR="$DOTDIR/zsh"
-            export ZSH_CUSTOM="$ZDOTDIR/custom"
+            # export ZSH_CUSTOM="$ZDOTDIR/custom"
             export ZSH="$ZDOTDIR/ohmyzsh"
             # export ZSH_THEME="gruvbox"
             # personal paths and variables
