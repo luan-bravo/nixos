@@ -41,12 +41,12 @@
             luarocks
             lua5_1
             unzip
-            openssl
         ## Hardware
         networkmanager
         iwd
         pipewire
         ## GUI
+        firefox
         # onwsl i3
         # onwsl dwm
         ## Programming
@@ -84,7 +84,6 @@
         SUDO_EDITOR = "${pkgs.neovim}/bin/nvim";
 
         FZF_BASE = "${pkgs.fzf}/bin/fzf";
-        OPENSSL_DIR = "${pkgs.openssl}/bin/openssl";
 
         IDF_PATH = "/opt/esp-idf";
         GIT_CONFIG_GLOBAL = "${config.users.users.lul.home}/.config/git/.gitconfig";

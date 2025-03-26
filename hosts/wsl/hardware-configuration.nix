@@ -34,6 +34,7 @@
         fsType = "tmpfs";
     };
 
+<<<<<<< Updated upstream
     fileSystems."/mnt/wslg/distro" = {
         device = "/dev/sdd";
         fsType = "ext4";
@@ -43,6 +44,16 @@
     fileSystems."/usr/lib/wsl/lib" = {
         device = "none";
         fsType = "overlay";
+=======
+  fileSystems."/mnt/wslg/distro" = {
+    device = "/dev/sdd";
+    fsType = "ext4";
+    options = [ "ro" "relatime" "discard" "errors=remount-ro" "data=ordered" ];
+  };
+  fileSystems."/usr/lib/wsl/lib" =
+    { device = "none";
+      fsType = "overlay";
+>>>>>>> Stashed changes
     };
 
     fileSystems."/tmp/.X11-unix" = {
