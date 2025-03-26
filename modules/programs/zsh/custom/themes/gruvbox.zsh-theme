@@ -226,7 +226,7 @@ build_rprompt() {
   # calendar="%{%F{7}%K{237}%} $(date '+%d/%m/%y') "
 
   clock_separator="%{%F{15}%K{235}%}$RIGHT_SEPARATOR"
-  clock="%{%F{237}%K{15}%} $(date '+%H:%M:%S')"
+  clock="%{%F{237}%K{15}%} $(date '+%H:%M:%S') "
 
   # rprompt=$calendar_separator$calendar$clock_separator$clock
   rprompt=$clock_separator$clock
