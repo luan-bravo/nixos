@@ -1,0 +1,12 @@
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:]}={[:upper:]}' ''
+zstyle ':completion:*' max-errors 2 not-numeric
+zstyle ':completion:*' prompt '%e'
+zstyle :compinstall filename '/home/lul/.config/zsh/compinstall'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
