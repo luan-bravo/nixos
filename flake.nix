@@ -29,6 +29,18 @@
                     }
                 ];
             };
+            wsl_a320m = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {inherit inputs;};
+                modules = [
+                    nixos-wsl.nixosModules.default
+                    ./hosts/wsl_a320m/configuration.nix
+                    {
+                        system.stateVersion = "24.05";
+                        wsl.enable = true;
+                    }
+                ];
+            };
         };
     };
 }
