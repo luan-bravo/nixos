@@ -1,4 +1,4 @@
-[submodule "modules/programs/modules/programs/zsh"]
+[submodule "zsh"]
 	path = modules/programs/zsh
 	url = https://github.com/luan-bravo/zsh.git
 	branch = nixmod
