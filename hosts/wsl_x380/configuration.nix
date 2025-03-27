@@ -220,5 +220,6 @@
         shell = pkgs.zsh;
         extraGroups = [ "networkmanager" "wheel" ];
     };
+    users.users.root.shell = pkgs.zsh;
     systemd.user.services.dbus.enable = true;
 }
