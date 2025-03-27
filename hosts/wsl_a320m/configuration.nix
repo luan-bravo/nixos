@@ -176,6 +176,14 @@
         shellInit = /*bash*/ ''
             ## Personal paths and variables
             export DOTDIR="$HOME/.config"
+
+            if [[ $HOME = "/root"  ]]; then
+                export ZDOTDIR="/etc/nixos/modules/programs/zsh"
+            else
+                export ZDOTDIR="$HOME/.config/zsh"
+            fi
+            export ZSH_CUSTOM="/etc/nixos/modules/programs/zsh/custom/"
+
             export DOTFILES="$HOME/.config"
             export GH="https://github.com"
             export NOTES="$HOME/notes"
