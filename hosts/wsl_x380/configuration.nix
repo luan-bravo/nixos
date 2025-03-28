@@ -87,7 +87,7 @@
         OPENSSL_DIR = "${pkgs.openssl}/bin/openssl";
 
         IDF_PATH = "/opt/esp-idf";
-        GIT_CONFIG_GLOBAL = "${config.users.users.lul.home}/.config/git/.gitconfig";
+        GIT_CONFIG_GLOBAL = "${config.users.users.lul.home}/.config/git/gitconfig";
         BUN_INSTALL = "${config.users.users.lul.home}/.bun";
         ANDROID_HOME = "${config.users.users.lul.home}/Android/sdk";
         FLYCTL_INSTALL = "${config.users.users.lul.home}/.fly";
