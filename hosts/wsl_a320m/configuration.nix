@@ -1,4 +1,12 @@
-{ config, pkgs, inputs, ... }:
+{
+    config,
+    pkgs,
+    inputs,
+    system,
+    timezone,
+    locale,
+    ...
+}:
 
 {
     imports = [
@@ -92,10 +100,6 @@
         ANDROID_HOME = "${config.users.users.lul.home}/Android/sdk";
         FLYCTL_INSTALL = "${config.users.users.lul.home}/.fly";
         PNPM_HOME = "${config.users.users.lul.home}/.local/share/pnpm";
-        # TODO: figure out why 'builtins.concatStrings' didn't work
-        # PATH = "$PATH:${environment.variables.ANDROID_HOME}/platform-tool:${environment.variables.ANDROID_HOME}/emulato:${environment.variables.FLYCTL_INSTALL}/bin:${config.users.users.lul.home}/.local/share/adb-fastboot/platform-tools:${config.users.users.lul.home}/.turso";
-        # "${config.home.homeDirectory}/.bun/_bun"
-        # "$IDF_PATH/export.sh"
     };
 
     ## Programs
@@ -229,5 +233,6 @@
         extraGroups = [ "networkmanager" "wheel" ];
     };
     users.users.root.shell = pkgs.zsh;
+    time.timeZone = timezone;
     systemd.user.services.dbus.enable = true;
 }
