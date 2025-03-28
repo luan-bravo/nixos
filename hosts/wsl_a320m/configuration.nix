@@ -162,7 +162,10 @@
             gsync = "git add -p && git commit -v && git push";
             ## Eza
             x = "eza -l -h -n -s='type' --icons";
+            ls = "x";
+            ll = "x";
             xa = "x -a";
+            l = "xa";
             xt = "x -T";
             xta = "xa -T";
             ## Fix overscan (when using old HDMI TV as monitor)
