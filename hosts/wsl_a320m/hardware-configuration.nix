@@ -4,6 +4,7 @@
 {
     imports = [ ];
 
+    environment.etc."hw-marker".text = "wsl_a320m";
     boot.initrd.availableKernelModules = [ "virtio_pci" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-amd" ];

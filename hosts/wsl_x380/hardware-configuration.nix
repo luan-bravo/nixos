@@ -3,6 +3,7 @@
 {
     imports = [ ];
 
+    environment.etc."hw-marker".text = "wsl_x380";
     boot.initrd.availableKernelModules = [ "virtio_pci" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-intel" ];
