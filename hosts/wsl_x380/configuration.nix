@@ -75,14 +75,14 @@
             zig
         ## Misc
         aoc-cli
+        neofetch
         fortune
         cowsay
         lolcat
-        neofetch
         # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-        # (pkgs.writeShellScriptBin "my-hello" ''
-        #   echo "Hello, ${config.home.username}!"
-        # '')
+        (pkgs.writeShellScriptBin "fortunecow" /*bash*/''
+            ${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat
+        '')
     ];
 
     environment.variables = {
